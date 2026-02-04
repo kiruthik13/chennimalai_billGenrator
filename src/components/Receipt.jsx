@@ -23,7 +23,9 @@ const Receipt = ({ data }) => {
     return (
         <div className="receipt-container" id="printable-receipt">
             <div className="god-image-container">
-                <img src={muruganImg} alt="Murugan" className="god-image" />
+                <div className="god-image-border">
+                    <img src={muruganImg} alt="Murugan" className="god-image" />
+                </div>
             </div>
 
             <div className="header-qr">
