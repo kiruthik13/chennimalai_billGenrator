@@ -1,0 +1,272 @@
+/* Base Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+}
+
+.app-header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Panes */
+.left-pane {
+  flex: 0 0 350px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.right-pane {
+  flex: 0 0 auto;
+}
+
+/* Control Panel */
+.control-panel h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.btn-generate {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-print {
+  background-color: #27ae60;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Receipt Styling - MECHANICAL PRINT REALISM */
+.receipt-container {
+  width: 280px;
+  background: white;
+  color: black;
+  padding: 8px;
+  /* Standardized padding */
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  line-height: 1.25;
+  /* Tight but readable line height */
+  border: 1px solid black;
+  position: relative;
+  min-height: 400px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.god-image-container {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  z-index: 10;
+}
+
+.god-image {
+  width: 20px;
+  height: auto;
+  display: block;
+}
+
+.receipt-content {
+  margin-top: 65px;
+  /* text-start-top = max(murugan-image-height, qr-height) + 10px */
+}
+
+.receipt-header {
+  margin-bottom: 12px;
+}
+
+.header-text p {
+  margin: 0;
+  font-weight: normal;
+  text-transform: none;
+  /* Match print (usually title case or normal) */
+  font-size: 9px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.header-qr {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  z-index: 10;
+}
+
+.qr-border {
+  border: 0.5px solid black;
+  padding: 1px;
+  display: inline-block;
+  width: 52px;
+  height: 52px;
+  box-sizing: border-box;
+}
+
+.service-line {
+  margin: 10px 0;
+}
+
+.service-line p {
+  margin: 0;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.bold-value {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.details-section {
+  margin: 10px 0;
+}
+
+.details-section p {
+  margin: 0;
+  white-space: pre;
+  /* Essential for typewriter alignment */
+}
+
+.amount-section {
+  text-align: center;
+  padding: 15px 0;
+}
+
+.amount-text {
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.footer-section {
+  margin-top: 10px;
+}
+
+.footer-section p {
+  margin: 0;
+  font-size: 10px;
+}
+
+.username-line {
+  text-align: center;
+  font-size: 9px !important;
+}
+
+.tamil-text {
+  margin-top: 4px !important;
+  text-align: center;
+}
+
+.tollfree {
+  margin-top: 20px !important;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Jitter for mechanical feel */
+.receipt-container * {
+  transform: rotate(calc(var(--jitter, 0) * 0.05deg)) translateX(calc(var(--jitter, 0) * 0.1px));
+}
+
+/* Print Specifics */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+  }
+
+  .app-container {
+    background-color: white;
+  }
+
+  .main-content {
+    padding: 0;
+    display: block;
+  }
+
+  .right-pane {
+    margin: 0;
+  }
+
+  .receipt-container {
+    border: 1px solid black;
+    box-shadow: none;
+    width: 80mm;
+    /* Standard thermal roll width */
+    padding: 2mm;
+    margin: 0;
+  }
+}
+
+.app-footer {
+  text-align: center;
+  padding: 20px;
+  color: #7f8c8d;
+  font-size: 0.8rem;
+}
