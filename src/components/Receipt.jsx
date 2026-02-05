@@ -64,6 +64,8 @@ const Receipt = ({ data }) => {
                 <div className="footer-section">
                     <p className="username-line">User Name (ID): MURUGA MURUGA [unit]</p>
                     <p className="tamil-text">செ.அ.நிலை-I</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
                     <p className="tollfree">Tollfree No. 1800 425 1757</p>
                 </div>
             </div>
