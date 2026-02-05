@@ -1,4 +1,6 @@
 import React from 'react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 const ControlPanel = ({ data, setData, onPrint }) => {
     const handleChange = (e) => {
@@ -13,15 +15,49 @@ const ControlPanel = ({ data, setData, onPrint }) => {
         const yy = String(today.getFullYear()).slice(-2);
         const mm = String(today.getMonth() + 1).padStart(2, '0');
         const dd = String(today.getDate()).padStart(2, '0');
-        const datePart = `${yy}${mm}${dd}`;
+        const datePart = `${yy}${mm}${dd} `;
         const randomDigit = Math.floor(Math.random() * 10);
-        const randomSerial = `${datePart}-${randomDigit}`;
+        const randomSerial = `${datePart} -${randomDigit} `;
 
         setData(prev => ({
             ...prev,
             receiptNo: randomReceipt,
             serialNo: randomSerial
         }));
+    };
+
+    const downloadPDF = async () => {
+        const input = document.getElementById('pdf-page-content');
+        if (!input) return;
+
+        try {
+            const canvas = await html2canvas(input, {
+                scale: 3, // Higher resolution
+                useCORS: true,
+                logging: false,
+                backgroundColor: '#ffffff'
+            });
+
+            const imgData = canvas.toDataURL('image/png');
+
+            // Fixed thermal printer size: 80mm × 140mm
+            const pdfWidth = 80;
+            const pdfHeight = 140;
+
+            // Create PDF with exact fixed dimensions
+            const pdf = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: [pdfWidth, pdfHeight]
+            });
+
+            // Add image to fill the entire page (margins are in the HTML/CSS)
+            pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+            pdf.save(`receipt-${data.serialNo}.pdf`);
+        } catch (error) {
+            console.error('PDF Generation Error:', error);
+            alert('Failed to generate PDF. Please try again.');
+        }
     };
 
     return (
@@ -50,6 +86,7 @@ const ControlPanel = ({ data, setData, onPrint }) => {
 
             <div className="button-group">
                 <button onClick={generateRandom} className="btn-generate">Generate Random Details</button>
+                <button onClick={downloadPDF} className="btn-pdf">Download PDF (80mm)</button>
                 <button onClick={onPrint} className="btn-print">Print Receipt</button>
             </div>
         </div>

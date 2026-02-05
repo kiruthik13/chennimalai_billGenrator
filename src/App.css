@@ -1,3 +1,6 @@
+/* Import Roboto font for consistent PDF rendering */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
 /* Base Layout */
 .app-container {
   display: flex;
@@ -83,6 +86,15 @@ button {
 .btn-generate {
   background-color: #3498db;
   color: white;
+}
+
+.btn-pdf {
+  background: #e67e22;
+  color: white;
+}
+
+.btn-pdf:hover {
+  background: #d35400;
 }
 
 .btn-print {
@@ -286,4 +298,194 @@ button:hover {
   padding: 20px;
   color: #7f8c8d;
   font-size: 0.8rem;
+}
+
+/* PDF Export Layout (80mm Thermal Printer) */
+
+/* Force normal font weight to prevent PDF auto-bolding */
+* {
+  font-weight: normal !important;
+}
+
+b,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal !important;
+}
+
+/* PDF Page Configuration - Force Roboto font for exact HTML-to-PDF match */
+@page {
+  size: 80mm 140mm;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  height: 140mm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Force Roboto font in PDF generation to prevent font changes */
+.pdf-page *,
+.pdf-receipt *,
+.pdf-header *,
+.pdf-details *,
+.pdf-amount-section *,
+.pdf-footer * {
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 400 !important;
+}
+
+.pdf-container-hidden {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+
+.pdf-page {
+  width: 80mm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: white;
+}
+
+.pdf-receipt {
+  width: 70mm;
+  margin: 0 auto;
+  border: 2px solid black;
+  padding: 4mm;
+  background: white;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 10px;
+  line-height: 1.4;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.pdf-top-row {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5mm;
+  width: 100%;
+}
+
+.pdf-logo img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  padding: 1px;
+}
+
+.pdf-qr .qr-border {
+  width: 50px;
+  height: 50px;
+  padding: 1px;
+}
+
+.pdf-qr canvas {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.pdf-header {
+  text-align: center;
+  margin-bottom: 6mm;
+}
+
+.pdf-header .temple-name {
+  font-size: 11pt;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.pdf-header .location-line {
+  font-size: 10pt;
+  margin: 2px 0 0 0;
+}
+
+.pdf-service-line {
+  text-align: center;
+  margin-bottom: 6mm;
+}
+
+.pdf-service-line p {
+  font-size: 12pt;
+  font-weight: bold;
+  margin: 0;
+}
+
+.pdf-details {
+  margin-bottom: 8mm;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+
+.pdf-details p {
+  font-size: 10pt;
+  margin: 0;
+  white-space: pre;
+}
+
+.pdf-details .serial-row {
+  display: flex;
+  align-items: baseline;
+  font-size: 10pt;
+}
+
+.pdf-details .serial-row .label {
+  min-width: 22.5mm;
+}
+
+.pdf-details .serial-row .serial-value {
+  font-size: 18pt;
+  font-weight: bold;
+  margin-left: 2mm;
+}
+
+.pdf-amount-section {
+  text-align: center;
+  margin-bottom: 8mm;
+}
+
+.pdf-amount-section .large-amount {
+  font-size: 20pt;
+  font-weight: bold;
+  margin: 0;
+}
+
+.pdf-footer {
+  text-align: center;
+}
+
+.pdf-footer p {
+  margin: 2mm 0;
+}
+
+.pdf-footer .username-line {
+  font-size: 8pt;
+}
+
+.pdf-footer .tamil-text {
+  font-size: 11pt;
+}
+
+.pdf-footer .tollfree {
+  font-size: 14pt;
+  font-weight: bold;
+  margin-top: 5mm !important;
 }

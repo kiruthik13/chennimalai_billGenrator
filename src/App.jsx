@@ -3,6 +3,8 @@ import ControlPanel from './components/ControlPanel';
 import Receipt from './components/Receipt';
 import './App.css';
 
+import PDFReceipt from './components/PDFReceipt';
+
 function App() {
   const today = new Date();
   const formattedDate = `${String(today.getDate()).padStart(2, '0')}/${String(today.getMonth() + 1).padStart(2, '0')}/${String(today.getFullYear()).slice(-2)}`;
@@ -41,6 +43,11 @@ function App() {
           <Receipt data={data} />
         </div>
       </main>
+
+      {/* Hidden container for PDF export */}
+      <div className="pdf-container-hidden">
+        <PDFReceipt data={data} />
+      </div>
 
       <footer className="app-footer no-print">
         <p>Built for Arulmigu Subramaniyaswamy Temple, Chennimalai</p>
