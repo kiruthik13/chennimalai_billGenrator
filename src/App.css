@@ -149,9 +149,10 @@ button:hover {
   font-weight: normal;
   text-transform: none;
   /* Match print (usually title case or normal) */
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.2;
   text-align: center;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .header-qr {
@@ -171,7 +172,7 @@ button:hover {
 }
 
 .service-line {
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
 .service-line p {
@@ -183,8 +184,9 @@ button:hover {
 }
 
 .bold-value {
-  font-weight: bold;
-  font-size: 13px;
+  font-weight: normal;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .details-section {
@@ -195,6 +197,7 @@ button:hover {
   margin: 0;
   white-space: pre;
   /* Essential for typewriter alignment */
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .amount-section {
@@ -220,12 +223,14 @@ button:hover {
 
 .username-line {
   text-align: center;
-  font-size: 9px !important;
+  font-size: 10px !important;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .tamil-text {
   margin-top: 4px !important;
-  text-align: center;
+  text-align: left;
+  padding-left: 25px;
 }
 
 .tollfree {

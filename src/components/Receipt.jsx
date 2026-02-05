@@ -45,12 +45,12 @@ const Receipt = ({ data }) => {
                 </div>
 
                 <div className="details-section">
-                    <p>{formatLine("Receipt No.", receiptNo)}</p>
+                    <p>{formatLine("Receipt No.                      ", receiptNo)}</p>
                     <p>&nbsp;</p>
-                    <p>{formatLine("Receipt Date", `${date} ${time}`)}</p>
+                    <p>{formatLine("Receipt Date                     ", `${date} ${time}`)}</p>
                     <p>&nbsp;</p>
                     <p>
-                        {"Serial No."}
+                        {"Serial No.                   "}
                         {" ".repeat(18 - "Serial No.".length)}
                         {": "}
                         <span className="bold-value">{serialNo}</span>
@@ -63,7 +63,8 @@ const Receipt = ({ data }) => {
 
                 <div className="footer-section">
                     <p className="username-line">User Name (ID): MURUGA MURUGA [unit]</p>
-                    <p className="tamil-text">செ.அ.நிலை-I</p>
+                    <p>&nbsp;</p>
+                    <p className="tamil-text">செ.அ.நிலை - I</p>
                     <p>&nbsp;</p>
                     <p>&nbsp;</p>
                     <p className="tollfree">Tollfree No. 1800 425 1757</p>
