@@ -8,7 +8,15 @@ const ControlPanel = ({ data, setData, onPrint }) => {
 
     const generateRandom = () => {
         const randomReceipt = 'R' + Math.floor(100000 + Math.random() * 900000) + ' ' + Math.floor(1000 + Math.random() * 9000) + ' ' + Math.floor(100000 + Math.random() * 900000);
-        const randomSerial = Math.floor(1000 + Math.random() * 9000) + '/B-';
+
+        const today = new Date();
+        const yy = String(today.getFullYear()).slice(-2);
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        const datePart = `${yy}${mm}${dd}`;
+        const randomDigit = Math.floor(Math.random() * 10);
+        const randomSerial = `${datePart}-${randomDigit}`;
+
         setData(prev => ({
             ...prev,
             receiptNo: randomReceipt,

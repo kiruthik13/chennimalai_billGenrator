@@ -41,7 +41,7 @@ const Receipt = ({ data }) => {
                 </div>
 
                 <div className="service-line">
-                    <p>special entrance Rs. {amount}</p>
+                    <p>special entrance Rs. {Math.floor(amount)}</p>
                 </div>
 
                 <div className="details-section">

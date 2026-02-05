@@ -12,8 +12,8 @@ function App() {
     date: formattedDate,
     time: formattedTime,
     amount: '25.00',
-    receiptNo: 'R102282 1127 233503',
-    serialNo: '2335/B-'
+    receiptNo: `R102282 ${Math.floor(1000 + Math.random() * 9000)} ${Math.floor(100000 + Math.random() * 900000)}`,
+    serialNo: `${formattedDate.split('/').reverse().join('').slice(-6)}-1`
   });
 
 

@@ -176,10 +176,10 @@ button:hover {
 
 .service-line p {
   margin: 0;
-  text-transform: uppercase;
   text-align: center;
-  font-weight: bold;
-  font-size: 12px;
+  font-weight: normal;
+  font-size: 17px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .bold-value {
@@ -203,9 +203,10 @@ button:hover {
 }
 
 .amount-text {
-  font-size: 17px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: normal;
   margin: 0;
+  font-family: 'Times New Roman', Times, serif !important;
 }
 
 .footer-section {
